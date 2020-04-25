@@ -1,0 +1,10 @@
+{
+    "short_name": "Pojedynek",
+    "name": "7 Cudów Świata - Pojedynek",
+    "start_url": "/pojedynek/",
+    "background_color": "#d7cebd",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#d7cebd"
+  }
+  

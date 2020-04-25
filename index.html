@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pojedynek - karta punktów</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="/pojedynek/manifest.json">
+  <link href="https://fonts.googleapis.com/css?family=Lemonada:400,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="table">
+    <div class="row header">
+      <div class="column icon header" style="background: #000;">⛰</div>
+      <div class="column" style="background: #bbc4c3;">Gracz 1</div>
+      <div class="column" style="background: #bbc4c3;">Gracz 2</div>
+    </div>
+    <div class="row" style="background: #a6bfc6;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28">
+          <rect style="fill: navy;" height="27" width="21" rx="3"></rect>
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #b7c5b8;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28">
+          <rect style="fill: green;" height="27" width="21" rx="3"></rect>
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #d2d4c6;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28">
+          <rect style="fill: rgb(255, 208, 0);" height="27" width="21" rx="3"></rect>
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #bebec6;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28">
+          <rect style="fill: purple;" height="27" width="21" rx="3"></rect>
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #d0d6d6;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 7.9374995 7.9374995">
+          <g
+          transform="translate(0,-289.0625)"
+          id="layer1">
+         <g
+            transform="translate(-0.06753142,0.25648)"
+            id="g821">
+           <path
+              style="fill:#d3bc5f;fill-opacity:1;stroke:none;stroke-width:0.40386155px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+              d="M 0.83748448,294.8614 H 5.2995664 l -2.4094256,-4.17326 -2.40218526,4.17175 z"
+              id="path815" />
+           <path
+              style="fill:#806600;fill-opacity:1;stroke:none;stroke-width:0.40386155px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+              d="M 5.2995664,294.8614 H 7.5846073 L 2.8901408,290.68814 Z"
+              id="path817" />
+         </g>
+       </g>
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #cbd7cd;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30">
+          <circle cx="15" cy="15" r="12" stroke="#d4aa00" stroke-width="4" fill="#ffcc00" />
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #dadcce;">
+      <div class="column">
+        <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30">
+          <circle cx="15" cy="15" r="12" stroke="#447821" stroke-width="4" fill="#5aa024" />
+        </svg>
+      </div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #d1c6c2;">
+      <div class="column"></div>
+      <div class="column"><input type="number" name="p1[]" min="0" /></div>
+      <div class="column"><input type="number" name="p2[]" min="0" /></div>
+    </div>
+    <div class="row" style="background: #c9d3d4;">
+      <div class="column icon total" style="background: #3b3c3a;">Σ</div>
+      <div class="column"><input type="number" name="p1Total" class="total" disabled /></div>
+      <div class="column"><input type="number" name="p2Total" class="total" disabled /></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    const p1Inputs = document.querySelectorAll('input[name="p1[]"]');
+    const p2Inputs = document.querySelectorAll('input[name="p2[]"]');
+
+    p1Inputs.forEach(item => {
+      item.addEventListener('change', event => {
+        let p1Points = 0;
+
+        p1Inputs.forEach(item => {
+          p1Points += Number(item.value);
+        });
+
+        document.querySelector('input[name="p1Total"]').value = p1Points;
+      })
+    });
+    p2Inputs.forEach(item => {
+      item.addEventListener('change', event => {
+        let p2Points = 0;
+
+        p2Inputs.forEach(item => {
+          p2Points += Number(item.value);
+        });
+
+        document.querySelector('input[name="p2Total"]').value = p2Points;
+      })
+    });
+  </script>
+</body>
+
+</html>
